@@ -143,7 +143,6 @@
             this.Controls.Add(this.OriginCanvasPanel);
             this.Name = "Form";
             this.Text = "Pixelator";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.OriginCanvasPanel.ResumeLayout(false);
             this.OriginCanvasPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OriginCanvas)).EndInit();
