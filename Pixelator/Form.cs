@@ -13,8 +13,6 @@ namespace Pixelator
 {
     public partial class Form : System.Windows.Forms.Form
     {
-        private Pixelizer pixelizer;
-
         public Form()
         {
             InitializeComponent();
@@ -63,33 +61,9 @@ namespace Pixelator
                 return;
             }
 
-            Bitmap pixelizedImage = new Bitmap(OriginCanvas.Image.Width, OriginCanvas.Image.Height);
+            Pixelizer pixelizer = new Pixelizer(new Bitmap(OriginCanvas.Image), (int)PixelateTrackBar.Value);
 
-            Graphics graphics = Graphics.FromImage(pixelizedImage);
-
-            pixelizer = new Pixelizer(new Bitmap(OriginCanvas.Image), (int)PixelateTrackBar.Value);
-
-            Bitmap pxlzBitmap = pixelizer.Pixelate();
-
-            int pixelX = 0;
-            int pixelY = 0;
-
-            for(int x = 0; x < pxlzBitmap.Width; x++)
-            {
-                for(int y = 0; y < pxlzBitmap.Height; y++)
-                {
-                    Brush brush = new SolidBrush(pxlzBitmap.GetPixel(x, y));
-
-                    graphics.FillRectangle(brush, pixelX, pixelY, (int)PixelateTrackBar.Value, (int)PixelateTrackBar.Value);
-
-                    pixelY += (int)PixelateTrackBar.Value;
-                }
-
-                pixelY = 0;
-                pixelX += (int)PixelateTrackBar.Value;
-            }
-
-            PixelateCanvas.Image = pixelizedImage;
+            PixelateCanvas.Image = pixelizer.PixelateSameSize();
         }
     }
 }

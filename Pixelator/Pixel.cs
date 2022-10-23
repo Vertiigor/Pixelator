@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +52,15 @@ namespace Pixelator
             }
         }
 
+        public Color Color => Color.FromArgb(A, R, G, B);
+
+        /// <summary>
+        /// Initializing a New Pixel Object
+        /// </summary>
+        /// <param name="a">Alpha canal</param>
+        /// <param name="r">Red component</param>
+        /// <param name="g">Green component</param>
+        /// <param name="b">Blue component</param>
         public Pixel(int a, int r, int g, int b)
         {
             A = a;
