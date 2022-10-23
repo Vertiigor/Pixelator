@@ -34,7 +34,7 @@ namespace Pixelator
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "error");
+                    MessageBox.Show(ex.Message, "Error");
                 }
             }
         }
@@ -49,13 +49,20 @@ namespace Pixelator
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "error");
+                    MessageBox.Show(ex.Message, "Error");
                 }
             }
         }
 
         private void PixelateButton_Click(object sender, EventArgs e)
         {
+            if((Bitmap)OriginCanvas.Image == null)
+            {
+                MessageBox.Show("Origin image is empty", "Error");
+
+                return;
+            }
+
             Bitmap pixelizedImage = new Bitmap(OriginCanvas.Image.Width, OriginCanvas.Image.Height);
 
             Graphics graphics = Graphics.FromImage(pixelizedImage);
