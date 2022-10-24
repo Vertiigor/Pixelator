@@ -140,6 +140,8 @@ namespace Pixelator
             pixel.G = g / (degree * degree);
             pixel.B = b / (degree * degree);
 
+            pixel.A = pixel.A < 255 && pixel.A > 0 ? 255 : pixel.A; //now all pixels are opaque
+
             return pixel;
         }
     }
